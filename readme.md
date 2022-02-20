@@ -15,6 +15,7 @@
 9. [Guesing game one](https://www.practicepython.org/exercise/2014/04/02/09-guessing-game-one.html)
 10. [List Overlap Comprehensions](https://www.practicepython.org/exercise/2014/04/10/10-list-overlap-comprehensions.html)
 11. [Check Primality Function](https://www.practicepython.org/exercise/2014/04/16/11-check-primality-functions.html)
+12. [List Ends](https://www.practicepython.org/exercise/2014/04/25/12-list-ends.html)
  
 
 
