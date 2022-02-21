@@ -16,6 +16,8 @@
 10. [List Overlap Comprehensions](https://www.practicepython.org/exercise/2014/04/10/10-list-overlap-comprehensions.html)
 11. [Check Primality Function](https://www.practicepython.org/exercise/2014/04/16/11-check-primality-functions.html)
 12. [List Ends](https://www.practicepython.org/exercise/2014/04/25/12-list-ends.html)
+13. [Fibonacci](https://www.practicepython.org/exercise/2014/04/30/13-fibonacci.html)
+14. [List Remove Duplicates](https://www.practicepython.org/exercise/2014/05/15/14-list-remove-duplicates.html)
  
 
 
