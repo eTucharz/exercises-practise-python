@@ -25,11 +25,11 @@ for _ in range(2):
 # create the function that return list of common elements  between list1 and list2
 
 
-def get_duplicates(list1, list2):
+def get_common_elements(list1, list2):
     listOfDuplicates = [number for number in list1 if number in list2]
     return listOfDuplicates
 
 
 # call a function
-duplicates = get_duplicates(list1, list2)
-print(duplicates)
+commonElements = get_common_elements(list1, list2)
+print(commonElements)
