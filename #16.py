@@ -8,10 +8,41 @@ Extra:
 
 Ask the user how strong they want their password to be. For weak passwords, pick a word or two from a list.
 '''
+# import modules
 
-from random import sample, randrange, shuffle
+from random import sample, shuffle
 import string
 
+# ask user if want generate password of standard length or custom
+
+
+def ask_user_for_type_of_pass():
+    print("Hey! Welcome in PassGen!\nNow you can generate your new password which be a mix of lowercase letters, uppercase letters, numbers, and symbols\nDefault password has 10 characters\nIf you want now generate password of standard length just click (y)\nOtherwise click (n)")
+    wantGeneratePassOfStandardLength = input()
+    return wantGeneratePassOfStandardLength
+
+# define a function that ask user for number od characters to generate new password
+
+
+def get_number_of_characters_for_generate_pass(wantGeneratePassOfStandardLength):
+    numberOfCharactersForGeneratePass = 10
+    if wantGeneratePassOfStandardLength == "y":
+        return numberOfCharactersForGeneratePass
+    else:
+        numberOfCharactersForGeneratePass = int(input(
+            "Feel free to give amount of characters for yor new password"))
+        return numberOfCharactersForGeneratePass
+
+
+wantGeneratePassOfStandardLength = ask_user_for_type_of_pass()
+
+numberOfCharactersToGeneratePass = get_number_of_characters_for_generate_pass(
+    wantGeneratePassOfStandardLength)
+
+print(numberOfCharactersToGeneratePass)
+
+
+'''
 characters = string.printable
 print(characters)
 
@@ -25,6 +56,4 @@ randomNumbers = sample(numbersList, 5)
 print(randomNumbers)
 
 someList = ["a", "gp", "$*@"]
-
-shuffle(someList)
-print(someList)
+'''
