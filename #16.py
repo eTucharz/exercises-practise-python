@@ -11,7 +11,7 @@ Ask the user how strong they want their password to be.
 # import modules
 
 from random import sample, shuffle
-import string
+from string import ascii_letters, digits, punctuation
 
 # ask user if want generate password of standard length or custom
 
@@ -29,15 +29,15 @@ def get_number_of_characters_for_generate_pass(wantGeneratePassOfStandardLength)
     if wantGeneratePassOfStandardLength == "y":
         return numberOfCharactersForGeneratePass
     else:
-        numberOfCharactersForGeneratePass = int(input(
-            "Feel free to give amount of characters for yor new password"))
+        numberOfCharactersForGeneratePass = int(
+            input("Feel free to give amount of characters for yor new password"))
         return numberOfCharactersForGeneratePass
 
 # define a function that generate pass of given length of characters
 
 
 def generate_pass(numberOfCharactersForGeneratePass):
-    characters = list(string.printable)
+    characters = list(ascii_letters + digits + punctuation)
     shuffle(characters)
     generatedPass = "".join(
         sample(characters, numberOfCharactersForGeneratePass))
