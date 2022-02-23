@@ -6,7 +6,7 @@ Write a password generator in Python. Be creative with how you generate password
 
 Extra:
 
-Ask the user how strong they want their password to be. For weak passwords, pick a word or two from a list.
+Ask the user how strong they want their password to be. 
 '''
 # import modules
 
@@ -33,27 +33,28 @@ def get_number_of_characters_for_generate_pass(wantGeneratePassOfStandardLength)
             "Feel free to give amount of characters for yor new password"))
         return numberOfCharactersForGeneratePass
 
+# define a function that generate pass of given length of characters
+
+
+def generate_pass(numberOfCharactersForGeneratePass):
+    characters = list(string.printable)
+    shuffle(characters)
+    generatedPass = "".join(
+        sample(characters, numberOfCharactersForGeneratePass))
+    return generatedPass
+
+# define a function that print generated pass
+
+
+def print_generated_pass(generatedPass):
+    print(f"Your password: {generatedPass}")
+
 
 wantGeneratePassOfStandardLength = ask_user_for_type_of_pass()
 
-numberOfCharactersToGeneratePass = get_number_of_characters_for_generate_pass(
+numberOfCharactersForGeneratePass = get_number_of_characters_for_generate_pass(
     wantGeneratePassOfStandardLength)
 
-print(numberOfCharactersToGeneratePass)
+generatedPass = generate_pass(numberOfCharactersForGeneratePass)
 
-
-'''
-characters = string.printable
-print(characters)
-
-lengthOfPass = 20
-
-number = randrange(lengthOfPass)
-print(number)
-
-numbersList = [number for number in range(10)]
-randomNumbers = sample(numbersList, 5)
-print(randomNumbers)
-
-someList = ["a", "gp", "$*@"]
-'''
+print_generated_pass(generatedPass)
