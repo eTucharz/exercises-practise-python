@@ -1,3 +1,15 @@
+'''
+Create a program that will play the “cows and bulls” game with the user. The game works like this:
+
+Randomly generate a 4-digit number. Ask the user to guess a 4-digit number.
+For every digit that the user guessed correctly in the correct place, they have a “cow”.
+For every digit the user guessed correctly in the wrong place is a “bull.”
+Every time the user makes a guess, tell them how many “cows” and “bulls” they have.
+Once the user guesses the correct number,
+the game is over. Keep track of the number of guesses the user makes throughout teh game and tell the user at the end.
+'''
+
+
 from random import randint
 
 
@@ -20,41 +32,37 @@ def generate_number():
     return generatedNum
 
 
-def update_player_hits(givenNum, generatedNum):
+def check_player_hits(givenNum, generatedNum):
     for i, v in enumerate(givenNum):
-
         if v == generatedNum[i]:
-            playerGuesses["cow"] += 1
-            i += 1
+            playerHits["cow"] += 1
         else:
-            playerGuesses["bull"] += 1
-            i += 1
-    return playerGuesses
+            playerHits["bull"] += 1
+        i += 1
 
 
-def check_for_guess_number(playerGuesses):
-    if playerGuesses["cow"] == 4:
+def check_for_guess_number(playerHits):
+    if playerHits["cow"] == 4:
         return True
     else:
         return False
 
 
-def actualize_player_data(playerGuesses):
+def update_player_hits(playerGuesses):
     playerGuesses["guesses"] += 1
     playerGuesses["cow"] = 0
     playerGuesses["bull"] = 0
 
 
-def show_stats(playerGuesses):
-    print(
-        f'You have:\n{playerGuesses["cow"]} cows\n{playerGuesses["bull"]} bulls')
+def show_player_hits(playerHits):
+    return f'You have:\n{playerHits["cow"]} cows\n{playerHits["bull"]} bulls'
 
 
 welcome_player()
 
 playGame = True
 generatedNum = generate_number()
-playerGuesses = {"cow": 0, "bull": 0, "guesses": 0}
+playerHits = {"cow": 0, "bull": 0, "guesses": 0}
 
 while playGame:
 
@@ -62,13 +70,15 @@ while playGame:
 
     print(generatedNum)
 
-    playerGuesses = update_player_hits(givenNum, generatedNum)
+    check_player_hits(givenNum, generatedNum)
 
-    isGuessNumber = check_for_guess_number(playerGuesses)
+    isGuessNumber = check_for_guess_number(playerHits)
 
     if isGuessNumber:
-        print(f'You guessed {playerGuesses["guesses"]} times before hit')
+        print(
+            f'Congratulation! You guessed {playerHits["guesses"]} times before hit')
         playGame = False
     else:
-        stats = show_stats(playerGuesses)
-        actualize_player_data(playerGuesses)
+        stats = show_player_hits(playerHits)
+        print(stats)
+        update_player_hits(playerHits)
