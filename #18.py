@@ -58,27 +58,29 @@ def show_player_hits(playerHits):
     return f'You have:\n{playerHits["cow"]} cows\n{playerHits["bull"]} bulls'
 
 
-welcome_player()
+if __name__ == "__main__":
 
-playGame = True
-generatedNum = generate_number()
-playerHits = {"cow": 0, "bull": 0, "guesses": 0}
+    welcome_player()
 
-while playGame:
+    playGame = True
+    generatedNum = generate_number()
+    playerHits = {"cow": 0, "bull": 0, "guesses": 0}
 
-    givenNum = get_number_from_player()
+    while playGame:
 
-    print(generatedNum)
+        givenNum = get_number_from_player()
 
-    check_player_hits(givenNum, generatedNum)
+        print(generatedNum)
 
-    isGuessNumber = check_for_guess_number(playerHits)
+        check_player_hits(givenNum, generatedNum)
 
-    if isGuessNumber:
-        print(
-            f'Congratulation! You guessed {playerHits["guesses"]} times before hit')
-        playGame = False
-    else:
-        stats = show_player_hits(playerHits)
-        print(stats)
-        update_player_hits(playerHits)
+        isGuessNumber = check_for_guess_number(playerHits)
+
+        if isGuessNumber:
+            print(
+                f'Congratulation! You guessed {playerHits["guesses"]} times before hit')
+            playGame = False
+        else:
+            stats = show_player_hits(playerHits)
+            print(stats)
+            update_player_hits(playerHits)
