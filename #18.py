@@ -33,12 +33,14 @@ def generate_number():
 
 
 def check_player_hits(givenNum, generatedNum):
+    playerHits = {"cow": 0, "bull": 0}
     for i, v in enumerate(givenNum):
         if v == generatedNum[i]:
             playerHits["cow"] += 1
         else:
             playerHits["bull"] += 1
         i += 1
+    return playerHits
 
 
 def check_for_guess_number(playerHits):
@@ -46,12 +48,6 @@ def check_for_guess_number(playerHits):
         return True
     else:
         return False
-
-
-def update_player_hits(playerGuesses):
-    playerGuesses["guesses"] += 1
-    playerGuesses["cow"] = 0
-    playerGuesses["bull"] = 0
 
 
 def show_player_hits(playerHits):
@@ -63,8 +59,8 @@ if __name__ == "__main__":
     welcome_player()
 
     playGame = True
+    guesses = 0
     generatedNum = generate_number()
-    playerHits = {"cow": 0, "bull": 0, "guesses": 0}
 
     while playGame:
 
@@ -72,15 +68,15 @@ if __name__ == "__main__":
 
         print(generatedNum)
 
-        check_player_hits(givenNum, generatedNum)
+        playerHits = check_player_hits(givenNum, generatedNum)
 
         isGuessNumber = check_for_guess_number(playerHits)
 
         if isGuessNumber:
             print(
-                f'Congratulation! You guessed {playerHits["guesses"]} times before hit')
+                f'Congratulation! You guessed {guesses} times before hit')
             playGame = False
         else:
             stats = show_player_hits(playerHits)
             print(stats)
-            update_player_hits(playerHits)
+            guesses += 1
