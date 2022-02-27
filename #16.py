@@ -6,7 +6,7 @@ Write a password generator in Python. Be creative with how you generate password
 
 Extra:
 
-Ask the user how strong they want their password to be. 
+Ask the user how strong they want their password to be.
 '''
 # import modules
 
