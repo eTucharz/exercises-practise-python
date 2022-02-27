@@ -23,60 +23,60 @@ Try to do that as fast as you can!""")
 
 
 def get_number_from_player():
-    givenNum = input("Give me 4 - digit number ")
-    return givenNum
+    given_num = input("Give me 4 - digit number ")
+    return given_num
 
 
 def generate_number():
-    generatedNum = str(randint(1000, 9999))
-    return generatedNum
+    generated_num = str(randint(1000, 9999))
+    return generated_num
 
 
-def check_player_hits(givenNum, generatedNum):
-    playerHits = {"cow": 0, "bull": 0}
-    for i, v in enumerate(givenNum):
-        if v == generatedNum[i]:
-            playerHits["cow"] += 1
+def check_player_hits(given_num, generated_num):
+    player_hits = {"cow": 0, "bull": 0}
+    for i, v in enumerate(given_num):
+        if v == generated_num[i]:
+            player_hits["cow"] += 1
         else:
-            playerHits["bull"] += 1
+            player_hits["bull"] += 1
         i += 1
-    return playerHits
+    return player_hits
 
 
-def check_for_guess_number(playerHits):
-    if playerHits["cow"] == 4:
+def check_for_guess_number(player_hits):
+    if player_hits["cow"] == 4:
         return True
     else:
         return False
 
 
-def show_player_hits(playerHits):
-    return f'You have:\n{playerHits["cow"]} cows\n{playerHits["bull"]} bulls'
+def show_player_hits(player_hits):
+    return f'You have:\n{player_hits["cow"]} cows\n{player_hits["bull"]} bulls'
 
 
 if __name__ == "__main__":
 
     welcome_player()
 
-    playGame = True
+    play_game = True
     guesses = 0
-    generatedNum = generate_number()
+    generated_num = generate_number()
 
-    while playGame:
+    while play_game:
 
-        givenNum = get_number_from_player()
+        given_num = get_number_from_player()
 
-        print(generatedNum)
+        print(generated_num)
 
-        playerHits = check_player_hits(givenNum, generatedNum)
+        player_hits = check_player_hits(given_num, generated_num)
 
-        isGuessNumber = check_for_guess_number(playerHits)
+        is_guess_number = check_for_guess_number(player_hits)
 
-        if isGuessNumber:
+        if is_guess_number:
             print(
                 f'Congratulation! You guessed {guesses} times before hit')
-            playGame = False
+            play_game = False
         else:
-            stats = show_player_hits(playerHits)
+            stats = show_player_hits(player_hits)
             print(stats)
             guesses += 1
