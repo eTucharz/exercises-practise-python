@@ -54,15 +54,24 @@ def show_player_hits(player_hits):
     return f'You have:\n{player_hits["cow"]} cows\n{player_hits["bull"]} bulls'
 
 
-if __name__ == "__main__":
+def ask_player_for_start_new_game():
+    print("Do you want play again?\nType:\n(y) to start new game\n(n) to quit")
+    want_play_new_game = input().lower()
+    if want_play_new_game == "y":
+        return True
+    else:
+        return False
 
-    welcome_player()
+
+if __name__ == "__main__":
 
     play_game = True
     guesses = 0
-    generated_num = generate_number()
 
     while play_game:
+        if guesses < 1:
+            welcome_player()
+            generated_num = generate_number()
 
         given_num = get_number_from_player()
 
@@ -74,8 +83,14 @@ if __name__ == "__main__":
 
         if is_guess_number:
             print(
-                f'Congratulation! You guessed {guesses} times before hit')
-            play_game = False
+                f'Congratulation!You guessed {guesses} times before hit')
+
+            want_play_new_game = ask_player_for_start_new_game()
+
+            if want_play_new_game:
+                guesses = 0
+            else:
+                play_game = False
         else:
             stats = show_player_hits(player_hits)
             print(stats)
