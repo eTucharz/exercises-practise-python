@@ -63,6 +63,11 @@ def ask_player_for_start_new_game():
         return False
 
 
+def congratulate_player_when_win(ask_player_for_start_new_game):
+    print(f'Congratulation!You guessed {guesses} times before hit')
+    return ask_player_for_start_new_game()
+
+
 if __name__ == "__main__":
 
     play_game = True
@@ -75,17 +80,13 @@ if __name__ == "__main__":
 
         given_num = get_number_from_player()
 
-        print(generated_num)
-
         player_hits = check_player_hits(given_num, generated_num)
 
         is_guess_number = check_for_guess_number(player_hits)
 
         if is_guess_number:
-            print(
-                f'Congratulation!You guessed {guesses} times before hit')
-
-            want_play_new_game = ask_player_for_start_new_game()
+            want_play_new_game = congratulate_player_when_win(
+                ask_player_for_start_new_game)
 
             if want_play_new_game:
                 guesses = 0
