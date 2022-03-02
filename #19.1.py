@@ -12,6 +12,7 @@ r_html = r.text
 
 soup = BeautifulSoup(r_html, features="html.parser")
 
+# get all paragraphs from the article using CSS Selectors
 
 all_paragraphs = soup.select("div.body__inner-container > p")
 
