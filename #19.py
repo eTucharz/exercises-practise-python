@@ -13,6 +13,8 @@ r_html = r.text
 soup = BeautifulSoup(r_html, features="html.parser")
 
 
+# get all paragraphs from the article using find_all()
+
 def get_article_paragraphs(soup):
     for div in soup.find_all('div', class_='body__inner-container'):
         for p in div.find_all('p'):
