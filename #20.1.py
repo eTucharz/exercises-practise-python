@@ -11,44 +11,45 @@ Use binary search.
 
 from random import sample
 
-# define function that find middle in list
+# define function that check for num in list
 
 
 def check_num_in_list(input_list, num):
 
+    input_list.sort()  # sort list
     while len(input_list) > 0:
+
+        # get index of middle number from list
         middle = float(len(input_list)) / 2
+
+        # get middle number from list
         middle_num = input_list[int(middle - .5)]
-        print(middle_num)
-        if len(input_list) == 1:
-            return num == middle_num
+
+        # check for number in list
+        if middle_num == num:
+            return num == middle_num  # return TRUE when number in list
 
         elif num > middle_num:
+            # slice list to take numbers from middle to end
             input_list = input_list[int(middle + .5):]
-            print(input_list)
 
         elif num < middle_num:
+            # slice list to take numbers from start to middle
             input_list = input_list[:int(middle - .5)]
-            print(input_list)
 
-    # else:
-        # get middle num whe list even
-        # middle_num = (input_list[int(middle)], input_list[int(middle - 1)])
+    return middle_num == num  # return FALSE when number not in list
 
 
-# generate list of 15 random numbers in range 200
-list_of_numbers = [number for number in sample(range(200), 15)]
-# if middle % 2 != 0:
-# num to check
+if __name__ == "__main__":
 
-num = 120
+    # generate list of 20 random numbers in range 200
+    list_of_numbers = [number for number in sample(range(200), 20)]
 
-# get list in ascending order using sort()
+    # number to check
+    num = 40
 
-list_of_numbers.sort()
-print(list_of_numbers)
+    # call the function
+    result = check_num_in_list(list_of_numbers, num)
 
-
-# check for num in list
-result = check_num_in_list(list_of_numbers, num)
-print(result)
+    # print result
+    print(result)
